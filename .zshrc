@@ -22,7 +22,7 @@ export PATH
 export MANPATH=/opt/local/man:$MANPATH
 
 source ~/.rvm/scripts/rvm
-rvm 1.9.2
+rvm 1.9.3
 rvm gemset use mygemset
 
 #CLASSPATH
@@ -222,3 +222,5 @@ echo "  `whoami | tr '[a-z]' '[A-Z]'`   "
 echo `date +%Y/%m/%d`
 cd
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
