@@ -35,10 +35,10 @@ nmap y9 y$
 nmap y0 y^
 
 " その他
-map ,q ;q!<CR>
-map ,w ;w<CR>
-map ,l :split<CR>
-map ,k :vsplit<CR>
+map <Leader>q ;q!<CR>
+map <Leader>w ;w<CR>
+map <Leader>l :split<CR>
+map <Leader>k :vsplit<CR>
 
 " 括弧を自動補完
 "inoremap { {}<LEFT>

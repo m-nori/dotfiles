@@ -42,6 +42,9 @@ set rtp+=~/.vim/bundle/vundle/
   " undo履歴を追える (need python support)
   NeoBundle 'Gundo'
 
+  " surround.vim : テキストを括弧で囲む／削除する
+  NeoBundle 'tpope/vim-surround'
+
   " smartchr.vim : ==などの前後を整形
   NeoBundle 'smartchr'
 
@@ -207,7 +210,7 @@ set rtp+=~/.vim/bundle/vundle/
   NeoBundle 'DumbBuf'
 
   " minibufexpl.vim : タブエディタ風にバッファ管理ウィンドウを表示
-  NeoBundle 'minibufexpl.vim'
+  " NeoBundle 'minibufexpl.vim'
 
   " NERDTree : ツリー型エクスプローラ
   NeoBundle 'The-NERD-tree'

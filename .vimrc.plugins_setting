@@ -6,23 +6,7 @@
 " VimFiler
 "------------------------------------
 let g:vimfiler_as_default_explorer = 1
-map ,e ;VimFiler<CR>
-
-"------------------------------------
-" MiniBufExplorer
-"------------------------------------
-"set minibfexp
-let g:miniBufExplMapWindowNavVim=1 "hjklで移動
-let g:miniBufExplSplitBelow=0  " Put new window above
-let g:miniBufExplMapWindowNavArrows=1
-let g:miniBufExplMapCTabSwitchBufs=1
-let g:miniBufExplModSelTarget=1
-let g:miniBufExplSplitToEdge=1
-let g:miniBufExplMaxSize = 10
-
-":MtでMiniBufExplorerの表示トグル
-"command! Mt :TMiniBufExplorer
-map mb :MiniBufExplorer<CR>
+map <Leader>e ;VimFiler<CR>
 
 "------------------------------------
 " Align
@@ -49,43 +33,41 @@ let Grep_Skip_Files = '*.bak *~'
 "------------------------------------
 " smartchr.vim
 "------------------------------------
-" inoremap <expr> = smartchr#loop('=', '==', '=>')
-" inoremap <expr> . smartchr#loop('.',  '->', '=>')
+inoremap <expr> = smartchr#loop('=', '==', '=>')
+inoremap <expr> . smartchr#loop('.',  '->', '=>')
 
-"
-" " 演算子の間に空白を入れる
-" inoremap <buffer><expr> + smartchr#one_of(' + ', ' ++ ', '+')
-" inoremap <buffer><expr> +=  smartchr#one_of(' += ')
-" " inoremap <buffer><expr> - smartchr#one_of(' - ', ' -- ', '-')
-" inoremap <buffer><expr> -=  smartchr#one_of(' -= ')
-" " inoremap <buffer><expr> / smartchr#one_of(' / ', ' // ', '/')
-" inoremap <buffer><expr> /=  smartchr#one_of(' /= ')
-" inoremap <buffer><expr> * smartchr#one_of(' * ', ' ** ', '*')
-" inoremap <buffer><expr> *=  smartchr#one_of(' *= ')
-" inoremap <buffer><expr> & smartchr#one_of(' & ', ' && ', '&')
-" inoremap <buffer><expr> % smartchr#one_of(' % ', '%')
-" inoremap <buffer><expr> =>  smartchr#one_of(' => ')
-" inoremap <buffer><expr> <-   smartchr#one_of(' <-  ')
-" inoremap <buffer><expr> <Bar> smartchr#one_of(' <Bar> ', ' <Bar><Bar> ', '<Bar>')
-" inoremap <buffer><expr> , smartchr#one_of(', ', ',')
-" " 3項演算子の場合は、後ろのみ空白を入れる
-" inoremap <buffer><expr> ? smartchr#one_of('? ', '?')
-" " inoremap <buffer><expr> : smartchr#one_of(': ', '::', ':')
+" 演算子の間に空白を入れる
+inoremap <buffer><expr> + smartchr#one_of(' + ', ' ++ ', '+')
+inoremap <buffer><expr> +=  smartchr#one_of(' += ')
+" inoremap <buffer><expr> - smartchr#one_of(' - ', ' -- ', '-')
+inoremap <buffer><expr> -=  smartchr#one_of(' -= ')
+" inoremap <buffer><expr> / smartchr#one_of(' / ', ' // ', '/')
+inoremap <buffer><expr> /=  smartchr#one_of(' /= ')
+inoremap <buffer><expr> * smartchr#one_of(' * ', ' ** ', '*')
+inoremap <buffer><expr> *=  smartchr#one_of(' *= ')
+inoremap <buffer><expr> & smartchr#one_of(' & ', ' && ', '&')
+inoremap <buffer><expr> % smartchr#one_of(' % ', '%')
+inoremap <buffer><expr> =>  smartchr#one_of(' => ')
+inoremap <buffer><expr> <-   smartchr#one_of(' <-  ')
+inoremap <buffer><expr> <Bar> smartchr#one_of(' <Bar> ', ' <Bar><Bar> ', '<Bar>')
+inoremap <buffer><expr> , smartchr#one_of(', ', ',')
+" 3項演算子の場合は、後ろのみ空白を入れる
+inoremap <buffer><expr> ? smartchr#one_of('? ', '?')
+" inoremap <buffer><expr> : smartchr#one_of(': ', '::', ':')
 
-" " =の場合、単純な代入や比較演算子として入力する場合は前後にスペースをいれる。
-" " 複合演算代入としての入力の場合は、直前のスペースを削除して=を入力
-" inoremap <buffer><expr> = search('¥(&¥<bar><bar>¥<bar>+¥<bar>-¥<bar>/¥<bar>>¥<bar><¥) ¥%#', 'bcn')? '<bs>= '  : search('¥(*¥<bar>!¥)¥%#', 'bcn') ? '= '  : smartchr#one_of(' = ', ' == ', '=')
+" =の場合、単純な代入や比較演算子として入力する場合は前後にスペースをいれる。
+" 複合演算代入としての入力の場合は、直前のスペースを削除して=を入力
+inoremap <buffer><expr> = search('¥(&¥<bar><bar>¥<bar>+¥<bar>-¥<bar>/¥<bar>>¥<bar><¥) ¥%#', 'bcn')? '<bs>= '  : search('¥(*¥<bar>!¥)¥%#', 'bcn') ? '= '  : smartchr#one_of(' = ', ' == ', '=')
 
-" " 下記の文字は連続して現れることがまれなので、二回続けて入力したら改行する
-" inoremap <buffer><expr> } smartchr#one_of('}', '}<cr>')
-" inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
-" "()は空白入れる
-" inoremap <buffer><expr> ( smartchr#one_of('( ')
-" inoremap <buffer><expr> ) smartchr#one_of(' )')
+" 下記の文字は連続して現れることがまれなので、二回続けて入力したら改行する
+inoremap <buffer><expr> } smartchr#one_of('}', '}<cr>')
+inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
+"()は空白入れる
+inoremap <buffer><expr> ( smartchr#one_of('( ')
+inoremap <buffer><expr> ) smartchr#one_of(' )')
 
-" " if文直後の(は自動で間に空白を入れる
-" inoremap <buffer><expr> ( search('¥<¥if¥%#', 'bcn')? ' (': '('
-
+" if文直後の(は自動で間に空白を入れる
+inoremap <buffer><expr> ( search('¥<¥if¥%#', 'bcn')? ' (': '('
 
 "------------------------------------
 " Fugitive.vim
@@ -372,6 +354,7 @@ function! RSpecQuickrun()
   let b:quickrun_config = {'type' : 'rspec/bundle'}
 endfunction
 autocmd BufReadPost *_spec.rb call RSpecQuickrun()
+
 "------------------------------------
 " Pydiction
 "------------------------------------
@@ -393,3 +376,4 @@ nmap <C-A> <Plug>ToggleN
 vmap <C-A> <Plug>ToggleV
 
 let g:toggle_pairs = { 'and':'or', 'or':'and', 'if':'unless', 'unless':'if', 'yes':'no', 'no':'yes', 'enable':'disable', 'disable':'enable', 'pick':'reword', 'reword':'fixup', 'fixup':'squash', 'squash':'edit', 'edit':'exec', 'exec':'pick' }
+

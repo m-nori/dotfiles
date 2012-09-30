@@ -20,7 +20,7 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 " -入力による候補番号の表示
 let g:neocomplcache_enable_quick_match = 1
 " 補完候補の一番先頭を選択状態にする(AutoComplPopと似た動作)
-let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_auto_select = 0
 "ポップアップメニューで表示される候補の数。初期値は100
 let g:neocomplcache_max_list = 20
 
@@ -37,7 +37,8 @@ let g:neocomplcache_dictionary_filetype_lists = {
     \ 'perl' : $HOME.'/.vim/dict/perl.dict',
     \ 'php' : $HOME.'/.vim/dict/php.dict',
     \ 'scheme' : $HOME.'/.vim/dict/scheme.dict',
-    \ 'vm' : $HOME.'/.vim/dict/vim.dict'
+    \ 'vm' : $HOME.'/.vim/dict/vim.dict',
+    \ 'ruby' : $HOME.'/.vim/dict/ruby.dict'
     \ }
 
 " Define keyword.
@@ -52,6 +53,7 @@ let g:neocomplcache_snippets_dir = $HOME.'/.vim/snippets'
 " スニペット
 imap <C-y> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
+map <Leader>s ;NeoComplCacheEditSnippets<CR>
 
 " 補完を選択しpopupを閉じる
 " inoremap <expr><C-y> neocomplcache#close_popup()
@@ -115,7 +117,7 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 let g:neocomplcache_include_paths = {
   \ 'cpp'  : '.,/opt/local/include/gcc46/c++,/opt/local/include,/usr/include',
   \ 'c'    : '.,/usr/include',
-  \ 'ruby' : '.,$HOME/.rvm/rubies/**/lib/ruby/1.8/',
+  \ 'ruby' : '.,$HOME/.rvm/rubies/**/lib/ruby/1.9.1/',
   \ }
 "インクルード文のパターンを指定
 let g:neocomplcache_include_patterns = {
