@@ -72,13 +72,13 @@ inoremap <buffer><expr> ( search('¥<¥if¥%#', 'bcn')? ' (': '('
 "------------------------------------
 " Fugitive.vim
 "------------------------------------
-nnoremap <Space>gd :<C-u>Gdiff<Enter>
-nnoremap <Space>gs :<C-u>Gstatus<Enter>
-nnoremap <Space>gl :<C-u>Glog<Enter>
-nnoremap <Space>ga :<C-u>Gwrite<Enter>
-nnoremap <Space>gc :<C-u>Gcommit<Enter>
-nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
-nnoremap <Space>gb :<C-u>Gblame<Enter>
+nnoremap <Leader>gd :<C-u>Gdiff<Enter>
+nnoremap <Leader>gs :<C-u>Gstatus<Enter>
+nnoremap <Leader>gl :<C-u>Glog<Enter>
+nnoremap <Leader>ga :<C-u>Gwrite<Enter>
+nnoremap <Leader>gc :<C-u>Gcommit<Enter>
+nnoremap <Leader>gC :<C-u>Git commit --amend<Enter>
+nnoremap <Leader>gb :<C-u>Gblame<Enter>
 
 
 "------------------------------------
@@ -157,10 +157,10 @@ nmap <Leader>rp :<C-u>Ref perl<Space>
 " open-blowser.vim
 "------------------------------------
 " カーソル下のURLをブラウザで開く
-nmap <Leader>fu <Plug>(openbrowser-open)
-vmap <Leader>fu <Plug>(openbrowser-open)
+nmap <Leader>ou <Plug>(openbrowser-open)
+vmap <Leader>ou <Plug>(openbrowser-open)
 " カーソル下のキーワードをググる
-nnoremap <Leader>fs :<C-u>OpenBrowserSearch<Space><C-r><C-w><Enter>
+nnoremap <Leader>os :<C-u>OpenBrowserSearch<Space><C-r><C-w><Enter>
 
 "------------------------------------
 " operator-camelize.vim
