@@ -16,7 +16,7 @@ set rtp+=~/.vim/bundle/vundle/
   NeoBundle 'scrooloose/nerdcommenter.git'
 
   " 自動閉じタグ
-  " NeoBundle 'yuroyoro/vim-autoclose'
+  NeoBundle 'yuroyoro/vim-autoclose'
 
   " -- でメソッドチェーン整形
   NeoBundle 'c9s/cascading.vim'
