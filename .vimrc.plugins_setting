@@ -80,6 +80,10 @@ nnoremap <Leader>gc :<C-u>Gcommit<Enter>
 nnoremap <Leader>gC :<C-u>Git commit --amend<Enter>
 nnoremap <Leader>gb :<C-u>Gblame<Enter>
 
+"------------------------------------
+" Gundo
+"------------------------------------
+nmap U :<C-u>GundoToggle<CR>
 
 "------------------------------------
 " DumbBuf.vim
