@@ -76,11 +76,15 @@ inoremap <C-d> <Del>
 " http://wozozo.hatenablog.com/entry/2012/02/08/121504
 map <Leader>j !python -m json.tool<CR>
 
+" インデントの変更
+vnoremap < <gv
+vnoremap > >gv
+
 " quickfixウィンドウではq/ESCで閉じる
 autocmd FileType qf nnoremap <buffer> q :ccl<CR>
 autocmd FileType qf nnoremap <buffer> <ESC> :ccl<CR>
 
-" cwでquickfixウィンドウの表示をtoggleするようにした
+" cfでquickfixウィンドウの表示をtoggleするようにした
 function! s:toggle_qf_window()
   for bufnr in range(1,  winnr('$'))
     if getwinvar(bufnr,  '&buftype') ==# 'quickfix'
@@ -90,6 +94,6 @@ function! s:toggle_qf_window()
   endfor
   execute 'botright cw'
 endfunction
-nnoremap <silent> cw :call <SID>toggle_qf_window()<CR>
+nnoremap <silent> cf :call <SID>toggle_qf_window()<CR>
 
 

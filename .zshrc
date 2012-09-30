@@ -149,8 +149,11 @@ alias pd='cd -'
 alias psg='ps -aef | grep -v grep | grep '
 alias gd='dirs -v; echo -n "select: "; read newdir; cd +"$newdir"'
 alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias refe2='${HOME}/Tools/refe/refe-1_9_2 --encoding=utf-8'
 alias r='rails'
+alias start_mysql='sudo /opt/local/share/mysql55/support-files/mysql.server start'
+alias sakura='ssh -p 60022 nori@www11248uf.sakura.ne.jp'
 
 #-----------------------------------------------------------------
 # 関数宣言

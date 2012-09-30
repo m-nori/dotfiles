@@ -42,9 +42,6 @@ set rtp+=~/.vim/bundle/vundle/
   " undo履歴を追える (need python support)
   NeoBundle 'Gundo'
 
-  " surround.vim : テキストを括弧で囲む／削除する
-  NeoBundle 'tpope/surround.vim'
-
   " smartchr.vim : ==などの前後を整形
   NeoBundle 'smartchr'
 
@@ -271,6 +268,9 @@ set rtp+=~/.vim/bundle/vundle/
 
   " vimからGit操作する
   NeoBundle 'tpope/vim-fugitive'
+
+  " vimからgistを使う
+  NeoBundle 'mattn/gist-vim'
 
   " ステータスラインをカッコよくする
   NeoBundle 'Lokaltog/vim-powerline'

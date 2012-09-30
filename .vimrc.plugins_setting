@@ -47,16 +47,6 @@ let Grep_Skip_Dirs = '.svn .git .hg'
 let Grep_Skip_Files = '*.bak *~'
 
 "------------------------------------
-" surround.vim
-"------------------------------------
-" s, ssで選択範囲を指定文字でくくる
-nmap s <Plug>Ysurround
-nmap ss <Plug>Yssurround
-let g:surround_{char2nr('e')} = "begin \r end"
-let g:surround_{char2nr('d')} = "do \r end"
-let g:surround_{char2nr("-")} = ":\r"
-
-"------------------------------------
 " smartchr.vim
 "------------------------------------
 " inoremap <expr> = smartchr#loop('=', '==', '=>')
@@ -173,9 +163,17 @@ let g:SrcExpl_GoBackMapKey  = "<C-b>"   " 戻る機能のMAP
 " nmap <F8> :CMiniBufExplorer<CR>:SrcExplToggle<CR>:TMiniBufExplorer<CR>
 
 "------------------------------------
+" vim-ref
+"------------------------------------
+let g:ref_use_vimproc=1
+let g:ref_refe_version=2
+nmap <Leader>rr :<C-u>Ref refe<Space>
+nmap <Leader>rm :<C-u>Ref man<Space>
+nmap <Leader>rp :<C-u>Ref perl<Space>
+
+"------------------------------------
 " open-blowser.vim
 "------------------------------------
-
 " カーソル下のURLをブラウザで開く
 nmap <Leader>fu <Plug>(openbrowser-open)
 vmap <Leader>fu <Plug>(openbrowser-open)
