@@ -265,6 +265,7 @@ autocmd FileType vimshell
 \| call vimshell#hook#set('emptycmd', ['g:my_emptycmd'])
 \| call vimshell#hook#set('preprompt', ['g:my_preprompt'])
 \| call vimshell#hook#set('preexec', ['g:my_preexec'])
+\| nmap ii G$i<CR>
 
 command! Vs :VimShell
 command! Vss :sp<CR><C-j>:VimShell
@@ -328,6 +329,12 @@ function! s:unite_my_settings()"{{{
   " ウィンドウを縦に分割して開く
   nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
   inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+
+  " 選択された内容を貼り付ける
+  let s:context = unite#get_context()
+  if s:context.buffer_name ==# 'completion'
+    inoremap <buffer> <expr> <C-y> unite#do_action('insert')
+  endif
 endfunction"}}}
 
 let g:unite_source_file_mru_limit = 200
