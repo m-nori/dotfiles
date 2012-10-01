@@ -241,14 +241,14 @@ function! g:my_chpwd(args, context)
   call vimshell#execute('echo "chpwd"')
 endfunction
 function! g:my_emptycmd(cmdline, context)
-  call vimshell#execute('echo "emptycmd"')
+  " call vimshell#execute('echo "emptycmd"')
   return a:cmdline
 endfunction
 function! g:my_preprompt(args, context)
-  call vimshell#execute('echo "preprompt"')
+  " call vimshell#execute('echo "preprompt"')
 endfunction
 function! g:my_preexec(cmdline, context)
-  call vimshell#execute('echo "preexec"')
+  " call vimshell#execute('echo "preexec"')
 
   if a:cmdline =~# '^\s*diff\>'
     call vimshell#set_syntax('diff')
@@ -267,6 +267,7 @@ autocmd FileType vimshell
 \| call vimshell#hook#set('preexec', ['g:my_preexec'])
 
 command! Vs :VimShell
+command! Vss :sp<CR><C-j>:VimShell
 
 "------------------------------------
 " rails.vim
