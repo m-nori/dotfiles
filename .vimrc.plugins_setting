@@ -267,8 +267,9 @@ autocmd FileType vimshell
 \| call vimshell#hook#set('emptycmd', ['g:my_emptycmd'])
 \| call vimshell#hook#set('preprompt', ['g:my_preprompt'])
 \| call vimshell#hook#set('preexec', ['g:my_preexec'])
-\| nmap ii G$i<CR>
-\| imap qq jjq
+\| nmap <buffer> ii G$i<CR>
+\| imap <buffer> qq jjq
+
 
 command! Vs :VimShell
 nmap <Leader>vs :Vs<CR>
@@ -321,6 +322,7 @@ function! s:unite_my_settings()"{{{
   " ESCキーを2回押すと終了する
   nmap <buffer> <ESC>      <Plug>(unite_exit)
   nmap <buffer> <ESC><ESC> <Plug>(unite_exit)
+  imap <buffer> qq      <Plug>(unite_exit)
   imap <buffer> jj      <Plug>(unite_insert_leave)
   nnoremap <silent><buffer> <C-k> :<C-u>call unite#mappings#do_action('preview')<CR>
   imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
