@@ -4,9 +4,38 @@
 
 "------------------------------------
 " VimFiler
+" ? //ヘルプ
+" q //終了
+" <Space> //マーク
+" m //マークしたファイルを移動
+" c //マークしたファイルをコピー
+" d //マークしたファイルを削除
+" p //ペースト
+" * //すべてをマーク
+" ~ //ホームへ移動
+" / //ルートに移動
+" L //ドライブに移動
+" J //ジャンプ
+" l //Enter
+" t //ツリーを開く
+" o //新しいウィンドウ
+" K //新しいフォルダを作る
+" N //新しいファイルを作る
+" x //関連付けられたコマンドを実行する
+" a //メニューを開く
+" H //VimShellを開く
+" ge //エクスプローラで開く
+" gr //grep
+" gf //find
+" TAB //2面ファイラーにする
 "------------------------------------
+" デフォルトエクスプローラを置き換える
 let g:vimfiler_as_default_explorer = 1
+" セーフモードオフで起動
+let g:vimfiler_safe_mode_by_default = 0
+" 開く
 map <Leader>e ;VimFiler<CR>
+
 
 "------------------------------------
 " Align
@@ -337,6 +366,10 @@ function! s:unite_my_settings()"{{{
   " ウィンドウを縦に分割して開く
   nnoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
   inoremap <silent> <buffer> <expr> <C-v> unite#do_action('vsplit')
+
+  " VimFilerで開く
+  nnoremap <silent> <buffer> <expr> <C-o> unite#do_action('vimfiler')
+  inoremap <silent> <buffer> <expr> <C-o> unite#do_action('vimfiler')
 
   " 選択された内容を貼り付ける
   let s:context = unite#get_context()
