@@ -62,15 +62,15 @@ let Grep_Skip_Files = '*.bak *~'
 "------------------------------------
 " smartchr.vim
 "------------------------------------
-inoremap <expr> = smartchr#loop('=', '==', '=>')
-inoremap <expr> . smartchr#loop('.',  '->', '=>')
+inoremap <expr> = smartchr#loop('= ', '== ', '=')
+" inoremap <expr> . smartchr#loop('.',  '->', '=>')
 
 " 演算子の間に空白を入れる
 inoremap <buffer><expr> + smartchr#one_of(' + ', ' ++ ', '+')
 inoremap <buffer><expr> +=  smartchr#one_of(' += ')
-" inoremap <buffer><expr> - smartchr#one_of(' - ', ' -- ', '-')
+inoremap <buffer><expr> - smartchr#one_of(' - ', ' -- ', '-')
 inoremap <buffer><expr> -=  smartchr#one_of(' -= ')
-" inoremap <buffer><expr> / smartchr#one_of(' / ', ' // ', '/')
+inoremap <buffer><expr> / smartchr#one_of(' / ', ' // ', '/')
 inoremap <buffer><expr> /=  smartchr#one_of(' /= ')
 inoremap <buffer><expr> * smartchr#one_of(' * ', ' ** ', '*')
 inoremap <buffer><expr> *=  smartchr#one_of(' *= ')
@@ -299,12 +299,8 @@ autocmd FileType vimshell
 \| nmap <buffer> ii G$i<CR>
 \| imap <buffer> qq jjq
 
-
 command! Vs :VimShell
 nmap <Leader>vs :Vs<CR>
-nmap <Leader>vz :VimShellInteractive zsh<CR>
-vmap <silent> ,s :VimShellSendString<CR>
-nmap <silent> ,s :VimShellSendString<CR>
 
 "------------------------------------
 " rails.vim
@@ -332,6 +328,12 @@ nnoremap <silent> [unite]u  :<C-u>Unite -no-split buffer file_mru<CR>
 nnoremap <silent> [unite]m  :<C-u>Unite -no-split file_mru<CR>
 " 現在のバッファのカレントディレクトリからファイル一覧
 nnoremap <silent> [unite]d  :<C-u>UniteWithBufferDir -no-split file<CR>
+" アウトライン
+nnoremap <silent> [unite]o  :<C-u>Unite -no-split outline<CR>
+" 文字列検索
+nnoremap <silent> [unite]s  :<C-u>Unite -no-split line<CR>
+" grep
+nnoremap <silent> [unite]g  :<C-u>Unite -no-split grep<CR>
 
 " nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
