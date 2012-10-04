@@ -359,7 +359,7 @@ function! s:unite_my_settings()"{{{
   nnoremap <silent><buffer> <C-k> :<C-u>call unite#mappings#do_action('preview')<CR>
   imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
   " Start insert.
-  let g:unite_enable_start_insert = 1
+  let g:unite_enable_start_insert = 0
 
   " ウィンドウを分割して開く
   nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('split')
