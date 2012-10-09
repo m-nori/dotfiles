@@ -182,9 +182,26 @@ let g:SrcExpl_GoBackMapKey  = "<C-b>"   " 戻る機能のMAP
 "------------------------------------
 let g:ref_use_vimproc=1
 let g:ref_refe_version=2
+let g:ref_source_webdict_encoding = 'euc-jp'
+if has("win32")
+  "set encoding より上に書くこと
+  let &termencoding = &encoding
+endif
+"webdictサイトの設定
+let g:ref_source_webdict_sites = {
+\   'e': {
+\     'url': 'http://www.yakugo.com/WebHint/QuickWord.aspx?w=%s',
+\   },
+\ }
+
+"デフォルトサイト
+let g:ref_source_webdict_sites.default = 'e'
+
+"出力に対するフィルタ。最初の数行を削除
 nmap <Leader>rr :<C-u>Ref refe<Space>
 nmap <Leader>rm :<C-u>Ref man<Space>
 nmap <Leader>rp :<C-u>Ref perl<Space>
+nmap <Leader>re :<C-u>Ref webdict<Space>
 
 "------------------------------------
 " open-blowser.vim
@@ -317,7 +334,7 @@ nmap    f [unite]
 nnoremap [unite]u  :<C-u>Unite -no-split<Space>
 
 " 全部乗せ
-nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -no-split -buffer-name=files buffer file_mru bookmark file<CR>
+nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -start-insert -no-split -buffer-name=files buffer file_mru bookmark file<CR>
 " ブックマーク
 nnoremap <silent> [unite]b  :<C-u>Unite -no-split bookmark<CR>
 " バッファ一覧
@@ -331,9 +348,9 @@ nnoremap <silent> [unite]d  :<C-u>UniteWithBufferDir -no-split file<CR>
 " アウトライン
 nnoremap <silent> [unite]o  :<C-u>Unite -no-split outline<CR>
 " 文字列検索
-nnoremap <silent> [unite]s  :<C-u>Unite -no-split line<CR>
+nnoremap <silent> [unite]s  :<C-u>Unite -start-insert -no-split line<CR>
 " grep
-nnoremap <silent> [unite]g  :<C-u>Unite -no-split grep<CR>
+nnoremap <silent> [unite]g  :<C-u>Unite -start-insert -no-split grep<CR>
 
 " nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
 
