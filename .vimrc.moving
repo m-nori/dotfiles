@@ -102,3 +102,26 @@ endfunction
 
 " insert mode でjjでesc
 inoremap jj <Esc>
+
+
+" 通常状態でqを押した時escにする（押し間違えが多いから）
+inoremap q <Esc>
+
+" カレントディレクトリを今開いているファイルに変更
+command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>')
+function! s:ChangeCurrentDir(directory, bang)
+    if a:directory == ''
+        lcd %:p:h
+    else
+        execute 'lcd' . a:directory
+    endif
+
+    if a:bang == ''
+        pwd
+    endif
+endfunction
+
+" Change current directory.
+nnoremap <silent> <Leader>cd :<C-u>CD<CR>
+
+
