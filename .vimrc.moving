@@ -105,7 +105,7 @@ inoremap jj <Esc>
 
 
 " 通常状態でqを押した時escにする（押し間違えが多いから）
-inoremap q <Esc>
+nnoremap q <Esc>
 
 " カレントディレクトリを今開いているファイルに変更
 command! -nargs=? -complete=dir -bang CD  call s:ChangeCurrentDir('<args>', '<bang>')
