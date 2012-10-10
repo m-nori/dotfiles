@@ -18,11 +18,13 @@ nmap 9 $
 " insert mode での移動
 inoremap  <C-e> <END>
 inoremap  <C-a> <HOME>
-" インサートモードでもhjklで移動（Ctrl押すけどね）
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
+" インサートモードはemacsキーバインドで
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+" C-hはバックスペース
+inoremap <C-h> <BS>
 
 "<space>j, <space>kで画面送り
 noremap <Space>j <C-f>
