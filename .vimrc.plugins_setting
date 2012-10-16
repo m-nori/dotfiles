@@ -318,6 +318,7 @@ autocmd FileType vimshell
 
 command! Vs :VimShell
 nmap <Leader>vs :Vs<CR>
+nmap <Leader>irb :VimShellInteractive irb<CR>
 
 "------------------------------------
 " rails.vim
