@@ -295,6 +295,11 @@ set rtp+=~/.vim/bundle/vundle/
   NeoBundle 'ruby-matchit'
 " }}}
 
+" node.js {{{{
+  NeoBundle 'teramako/jscomplete-vim'
+  NeoBundle 'myhere/vim-nodejs-complete'
+" }}}
+
 " ColorSchema{{{{
   " color schema 256
   NeoBundle 'desert256.vim'
