@@ -363,6 +363,8 @@ nnoremap <silent> [unite]rv  :<C-u>Unite -no-split rails/view<CR>
 nnoremap <silent> [unite]rl  :<C-u>Unite -no-split rails/lib<CR>
 nnoremap <silent> [unite]rj  :<C-u>Unite -no-split rails/javascript<CR>
 nnoremap <silent> [unite]rs  :<C-u>Unite -no-split rails/spec<CR>
+" Start insert.
+let g:unite_enable_start_insert = 1
 
 
 autocmd FileType unite call s:unite_my_settings()
@@ -376,7 +378,6 @@ function! s:unite_my_settings()"{{{
   imap <buffer> jj      <Plug>(unite_insert_leave)
   nnoremap <silent><buffer> <C-k> :<C-u>call unite#mappings#do_action('preview')<CR>
   imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-  " Start insert.
   let g:unite_enable_start_insert = 1
 
   " ウィンドウを分割して開く
