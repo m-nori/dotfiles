@@ -91,9 +91,9 @@ inoremap <buffer><expr> = search('¥(&¥<bar><bar>¥<bar>+¥<bar>-¥<bar>/¥<bar
 " 下記の文字は連続して現れることがまれなので、二回続けて入力したら改行する
 inoremap <buffer><expr> } smartchr#one_of('}', '}<cr>')
 inoremap <buffer><expr> ; smartchr#one_of(';', ';<cr>')
-"()は空白入れる
-inoremap <buffer><expr> ( smartchr#one_of('( ')
-inoremap <buffer><expr> ) smartchr#one_of(' )')
+"()は即座に補完
+inoremap <buffer><expr> ( smartchr#one_of(')')
+" inoremap <buffer><expr> ) smartchr#one_of(' )')
 
 " if文直後の(は自動で間に空白を入れる
 inoremap <buffer><expr> ( search('¥<¥if¥%#', 'bcn')? ' (': '('
@@ -365,7 +365,6 @@ nnoremap <silent> [unite]rj  :<C-u>Unite -no-split rails/javascript<CR>
 nnoremap <silent> [unite]rs  :<C-u>Unite -no-split rails/spec<CR>
 " Start insert.
 let g:unite_enable_start_insert = 1
-
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
