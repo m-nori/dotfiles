@@ -298,6 +298,7 @@ set rtp+=~/.vim/bundle/vundle/
 " node.js {{{{
   NeoBundle 'teramako/jscomplete-vim'
   NeoBundle 'myhere/vim-nodejs-complete'
+  NeoBundle 'digitaltoad/vim-jade'
 " }}}
 
 " ColorSchema{{{{
