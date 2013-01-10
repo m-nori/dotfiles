@@ -16,7 +16,7 @@ SAVEHIST=10000
 
 # set path
 #PATH=/home/apexei/bad01i/tools/local/bin:/home/apexei/bad01i/tools/local/#export PATH
-PATH=/opt/local/bin:${PATH}:/opt/local/sbin:${HOME}/.gem/ruby/1.9.1/bin:/usr/local/git/bin
+PATH=/opt/local/bin:${PATH}:/opt/local/sbin:${HOME}/.gem/ruby/1.9.1/bin:/usr/local/git/bin:${HOME}/local/bin
 export PATH
 
 export MANPATH=/opt/local/man:$MANPATH
@@ -27,7 +27,7 @@ rvm gemset use mygemset
 
 #CLASSPATH
 #export CLASSPATH=${CLASSPATH}:.
-export LANG=ja_JP.SJIS
+export LANG=ja_JP.UTF-8
 export TZ=JST-9
 export JLESSCHARSET=japanese-sjis
 export LESSCHARSET=dos
@@ -227,3 +227,56 @@ cd
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+###-begin-npm-completion-###
+#
+# npm command completion script
+#
+# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
+# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
+#
+
+COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
+COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
+export COMP_WORDBREAKS
+
+if type complete &>/dev/null; then
+  _npm_completion () {
+    local si="$IFS"
+    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
+                           COMP_LINE="$COMP_LINE" \
+                           COMP_POINT="$COMP_POINT" \
+                           npm completion -- "${COMP_WORDS[@]}" \
+                           2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  complete -F _npm_completion npm
+elif type compdef &>/dev/null; then
+  _npm_completion() {
+    si=$IFS
+    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
+                 COMP_LINE=$BUFFER \
+                 COMP_POINT=0 \
+                 npm completion -- "${words[@]}" \
+                 2>/dev/null)
+    IFS=$si
+  }
+  compdef _npm_completion npm
+elif type compctl &>/dev/null; then
+  _npm_completion () {
+    local cword line point words si
+    read -Ac words
+    read -cn cword
+    let cword-=1
+    read -l line
+    read -ln point
+    si="$IFS"
+    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
+                       COMP_LINE="$line" \
+                       COMP_POINT="$point" \
+                       npm completion -- "${words[@]}" \
+                       2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  compctl -K _npm_completion npm
+fi
+###-end-npm-completion-###
