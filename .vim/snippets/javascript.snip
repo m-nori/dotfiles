@@ -1,0 +1,30 @@
+snippet     req
+abbr        require
+    require('${1:target}')
+
+snippet     fun
+abbr        no_name_function
+   function(${1:args}) {
+        ${2}
+   }
+
+snippet     if
+abbr        if
+    if (${1:condition}) {
+        ${2}
+    }
+
+snippet     ifelse
+abbr        if_else
+    if (${1:condition}) {
+        ${2}
+    } else {
+        ${3}
+    }
+
+snippet     comment
+abbr        comment
+    /**
+     * ${1}
+     */
+
