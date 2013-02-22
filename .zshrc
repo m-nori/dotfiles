@@ -16,14 +16,14 @@ SAVEHIST=10000
 
 # set path
 #PATH=/home/apexei/bad01i/tools/local/bin:/home/apexei/bad01i/tools/local/#export PATH
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 PATH=/opt/local/bin:${PATH}:/opt/local/sbin:${HOME}/.gem/ruby/1.9.1/bin:/usr/local/git/bin:${HOME}/local/bin
 export PATH
 
 export MANPATH=/opt/local/man:$MANPATH
-
-source ~/.rvm/scripts/rvm
-rvm 1.9.3
-rvm gemset use mygemset
+#source ~/.rvm/scripts/rvm
+#rvm 1.9.3
+#rvm gemset use mygemset
 
 #CLASSPATH
 #export CLASSPATH=${CLASSPATH}:.
@@ -67,7 +67,6 @@ $'\n%{$fg[white]%}%#%{$reset_color%} '
 #
 # シェルの基本的な動作を変更するスイッチは、ほぼシステム非依存。
 setopt  always_last_prompt      # 無駄なスクロールを避ける
-setopt  append_history          # ヒストリファイルに追加
 setopt  auto_list                       # 自動的に候補一覧を表示
 setopt  auto_menu                       # 自動的にメニュー補完する
 setopt  auto_cd
@@ -108,10 +107,9 @@ setopt list_packed              # 補完候補リストを詰めて表示
 setopt print_eight_bit          # 補完候補リストの日本語を適正表示
 setopt AUTO_PUSHD               #cdの履歴を登録
 setopt PUSHD_IGNORE_DUPS        #重複するディレクトリを削除
-setopt append_history # 複数の zsh を同時に使う時など history ファイルに上書きせず追加
+setopt append_history           # 複数の zsh を同時に使う時など history ファイルに上書きせず追加
+setopt hist_ignore_dups         # ignore duplication command history list
 setopt share_history
-
-
 
 autoload -U zmv
 autoload -U _ls
@@ -119,6 +117,9 @@ autoload -U zed
 autoload -U zftp
 autoload -U zcalc
 
+HISTFILE=~/.zsh_history
+HISTSIZE=6000000
+SAVEHIST=6000000
 
 #-----------------------------------------------------------------
 # エイリアス設定
@@ -131,6 +132,7 @@ autoload -U zcalc
 # tcsh% alias m "mule !* &" → zsh%  m() { mule $* & }
 #
 #alias ls='ls --show-control-chars --color=auto -Fh'
+#alias ls='ls --color=auto'
 alias ll='ls -tlr'
 alias h='history'
 alias which='type -path'
@@ -148,8 +150,8 @@ alias -g P='| perl -pe'
 alias pd='cd -'
 alias psg='ps -aef | grep -v grep | grep '
 alias gd='dirs -v; echo -n "select: "; read newdir; cd +"$newdir"'
-alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+#alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+#alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias refe2='${HOME}/Tools/refe/refe-1_9_2 --encoding=utf-8'
 alias r='rails'
 alias start_mysql='sudo /opt/local/share/mysql55/support-files/mysql.server start'
@@ -227,6 +229,59 @@ cd
 
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+###-begin-npm-completion-###
+#
+# npm command completion script
+#
+# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
+# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
+#
+
+COMP_WORDBREAKS=${COMP_WORDBREAKS/=/}
+COMP_WORDBREAKS=${COMP_WORDBREAKS/@/}
+export COMP_WORDBREAKS
+
+if type complete &>/dev/null; then
+  _npm_completion () {
+    local si="$IFS"
+    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$COMP_CWORD" \
+                           COMP_LINE="$COMP_LINE" \
+                           COMP_POINT="$COMP_POINT" \
+                           npm completion -- "${COMP_WORDS[@]}" \
+                           2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  complete -F _npm_completion npm
+elif type compdef &>/dev/null; then
+  _npm_completion() {
+    si=$IFS
+    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
+                 COMP_LINE=$BUFFER \
+                 COMP_POINT=0 \
+                 npm completion -- "${words[@]}" \
+                 2>/dev/null)
+    IFS=$si
+  }
+  compdef _npm_completion npm
+elif type compctl &>/dev/null; then
+  _npm_completion () {
+    local cword line point words si
+    read -Ac words
+    read -cn cword
+    let cword-=1
+    read -l line
+    read -ln point
+    si="$IFS"
+    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
+                       COMP_LINE="$line" \
+                       COMP_POINT="$point" \
+                       npm completion -- "${words[@]}" \
+                       2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  compctl -K _npm_completion npm
+fi
+###-end-npm-completion-###
 ###-begin-npm-completion-###
 #
 # npm command completion script

@@ -62,7 +62,7 @@ let Grep_Skip_Files = '*.bak *~'
 "------------------------------------
 " smartchr.vim
 "------------------------------------
-inoremap <expr> = smartchr#loop('= ', '== ', '=')
+inoremap <expr> = smartchr#loop('= ', '== ', '===', '=' )
 " inoremap <expr> . smartchr#loop('.',  '->', '=>')
 
 " 演算子の間に空白を入れる

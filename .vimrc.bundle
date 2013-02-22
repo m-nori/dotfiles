@@ -101,7 +101,7 @@ set rtp+=~/.vim/bundle/vundle/
   NeoBundle 'Shougo/neocomplcache'
 
   " neocomplcacheのsinpet補完
-  NeoBundle 'Shougo/neocomplcache-snippets-complete'
+  NeoBundle 'Shougo/neosnippet'
 
   " for rsense
   NeoBundle 'm2ym/rsense'
