@@ -7,6 +7,7 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
+let g:neobundle_default_git_protocol='https'
 
 set rtp+=~/.vim/bundle/vundle/
 "call vundle#rc()
