@@ -7,59 +7,39 @@ SAVEHIST=10000
 #-----------------------------------------------------------------
 # 環境変数
 #-----------------------------------------------------------------
-# setup shell dir
-#SHELL=/home/apexei/bad01i/tools/local/bin/zsh
-#export SHELL
-
-#EXEC_PREFIX=/home/apexei/bad01i/tools/local/bin
-#export EXEC_PREFIX
-
 # set path
-#PATH=/home/apexei/bad01i/tools/local/bin:/home/apexei/bad01i/tools/local/#export PATH
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-PATH=/opt/local/bin:${PATH}:/opt/local/sbin:${HOME}/.gem/ruby/1.9.1/bin:/usr/local/git/bin:${HOME}/local/bin
+PATH=/opt/local/bin:${PATH}:/opt/local/sbin:${HOME}/local/bin
 export PATH
 
-export MANPATH=/opt/local/man:$MANPATH
-#source ~/.rvm/scripts/rvm
-#rvm 1.9.3
-#rvm gemset use mygemset
 
-#CLASSPATH
-#export CLASSPATH=${CLASSPATH}:.
+# set env
 export LANG=ja_JP.UTF-8
 export TZ=JST-9
 export JLESSCHARSET=japanese-sjis
 export LESSCHARSET=dos
-
-#expor  LISTMAX=10000
-#export  EDITOR=vi
-#export JLESSCHARSET=japanese-sijs
-#export LESSCHARSET=japanese-sjis
-#export  PAGER=more
 export LS_COLORS='di=01;36'
+
+# rbenv
+export RBENV_ROOT=/usr/local/rbenv
+export PATH="$RBENV_ROOT/bin:$PATH"
+eval "$(rbenv init -)"
+
+# nodevrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 #-----------------------------------------------------------------
 # プロンプト
 #-----------------------------------------------------------------
-# ユーザ名・ホスト名を左プロンプト表示、カレントディレクトリ名は
-# 右プロンプト表示する。日本語のディレクトリ名も表示できるように、
-# precmd() を使って毎回設定しなおしてみた。
-#
-
 # プロンプトのカラー表示を有効
 autoload -U colors
 colors
 usernam=`whoami`
 setopt prompt_subst
+#PROMPT=\
+#"${usernam}%{$fg[white]%}@%{$reset_color%}MacBookAir %~%{$fg[white]%}:%{$reset_color%}%!"\
+#$'\n%{$fg[white]%}%#%{$reset_color%} '
 
-#PROMPT="${LOGNAME}%{$fg[white]%}@%{$reset_color%}Side%{$fg[white]%}:%{$reset_color%}${side}%{$fg[white]%} $ %{$reset_color%}"
-#RPROMPT='%{$fg[white]%}%~%{$reset_color%}:%{$fg[white]%}%!%{$reset_color%}'
-
-PROMPT=\
-"${usernam}%{$fg[white]%}@%{$reset_color%}MacBookPro %~%{$fg[white]%}:%{$reset_color%}%!"\
-$'\n%{$fg[white]%}%#%{$reset_color%} '
-
+. ~/dotfiles/prompt.zsh
 
 #-----------------------------------------------------------------
 # シェル変数設定
@@ -161,21 +141,7 @@ alias sakura='ssh -p 60022 nori@www11248uf.sakura.ne.jp'
 # 関数宣言
 #-----------------------------------------------------------------
 #
-
-#chpwd() {
-#  FILE=`ls | wc -l`
-#  BASE=30
-#  BASE2=100
-#  if [ ${FILE} -lt ${BASE} ]
-#  then
-#    ls -trl
-#  else
-#    if [ ${FILE} -lt ${BASE2} ]
-# then
-# ls
-# fi
-#  fi
-#}
+#
 
 setenv() { export $1=$2 }
 
@@ -206,13 +172,6 @@ zstyle ':completion:*:default' menu select=1
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 #zstyle ':completion:*:default' menu select true
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-#-----------------------------------------------------------------
-# 終了時処理
-#-----------------------------------------------------------------
-#
-#
-#trap "banner 'logout';banner '${usernam}'" 0
 
 #-----------------------------------------------------------------
 # 起動時処理
@@ -335,3 +294,16 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+compdef _vagrant vagrant
+function _vagrant {
+  local -a cmds
+  if (( CURRENT == 2 ));then
+    cmds=('box' 'destroy' 'halt' 'init' 'package' 'plugin' 'provision' 'reload' 'resume' 'snapshot' 'ssh' 'ssh-config' 'status' 'suspend' 'up' 'snapshot')
+    _describe -t commands "subcommand" cmds
+  else
+    _files
+  fi
+
+  return 1;
+}
