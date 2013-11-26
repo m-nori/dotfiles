@@ -302,6 +302,10 @@ set rtp+=~/.vim/bundle/vundle/
   NeoBundle 'digitaltoad/vim-jade'
 " }}}
 
+" Clojer{{{{
+  NeoBundle 'thinca/vim-ft-clojure'
+" }}}
+
 " ColorSchema{{{{
   " color schema 256
   NeoBundle 'desert256.vim'
