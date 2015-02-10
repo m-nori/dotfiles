@@ -340,9 +340,9 @@ nnoremap <silent> [unite]a  :<C-u>UniteWithCurrentDir -start-insert -no-split -b
 " ブックマーク
 nnoremap <silent> [unite]b  :<C-u>Unite -no-split bookmark<CR>
 " バッファ一覧
-nnoremap <silent> [unite]f  :<C-u>Unite -no-split buffer<CR>
+nnoremap <silent> [unite]u  :<C-u>Unite -no-split buffer<CR>
 " 常用セット
-nnoremap <silent> [unite]u  :<C-u>Unite -no-split buffer file_mru<CR>
+nnoremap <silent> [unite]f  :<C-u>Unite -no-split buffer file_mru<CR>
 " 最近使用したファイル一覧
 nnoremap <silent> [unite]m  :<C-u>Unite -no-split file_mru<CR>
 " 現在のバッファのカレントディレクトリからファイル一覧

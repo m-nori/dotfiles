@@ -8,24 +8,8 @@ SAVEHIST=10000
 # 環境変数
 #-----------------------------------------------------------------
 # set path
-PATH=/opt/local/bin:${PATH}:/opt/local/sbin:${HOME}/local/bin
+PATH=/usr/local/bin:${PATH}:${HOME}/Tools
 export PATH
-
-
-# set env
-export LANG=ja_JP.UTF-8
-export TZ=JST-9
-export JLESSCHARSET=japanese-sjis
-export LESSCHARSET=dos
-export LS_COLORS='di=01;36'
-
-# rbenv
-export RBENV_ROOT=/usr/local/rbenv
-export PATH="$RBENV_ROOT/bin:$PATH"
-eval "$(rbenv init -)"
-
-# nodevrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 #-----------------------------------------------------------------
 # プロンプト
@@ -35,10 +19,6 @@ autoload -U colors
 colors
 usernam=`whoami`
 setopt prompt_subst
-#PROMPT=\
-#"${usernam}%{$fg[white]%}@%{$reset_color%}MacBookAir %~%{$fg[white]%}:%{$reset_color%}%!"\
-#$'\n%{$fg[white]%}%#%{$reset_color%} '
-
 . ~/dotfiles/prompt.zsh
 
 #-----------------------------------------------------------------
@@ -112,7 +92,7 @@ SAVEHIST=6000000
 # tcsh% alias m "mule !* &" → zsh%  m() { mule $* & }
 #
 #alias ls='ls --show-control-chars --color=auto -Fh'
-#alias ls='ls --color=auto'
+alias ls='ls -G'
 alias ll='ls -tlr'
 alias h='history'
 alias which='type -path'
@@ -307,3 +287,31 @@ function _vagrant {
 
   return 1;
 }
+
+################################################################################ 
+# Peco 
+################################################################################ 
+function peco-select-history() { 
+typeset tac 
+if which tac > /dev/null; then 
+tac=tac 
+else 
+tac='tail -r' 
+fi 
+BUFFER=$(fc -l -n 1 | eval $tac | peco --query "$LBUFFER" --layout=bottom-up) 
+CURSOR=$#BUFFER 
+zle -R -c 
+} 
+zle -N peco-select-history 
+bindkey '^r' peco-select-history 
+
+function pcd () { 
+local selected_dir=$(find ~/ -type d | peco) 
+if [ -n "$selected_dir" ]; then 
+BUFFER="cd ${selected_dir}" 
+zle accept-line 
+fi 
+zle clear-screen 
+} 
+zle -N pcd 
+

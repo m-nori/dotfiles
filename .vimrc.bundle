@@ -4,7 +4,9 @@ filetype off
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle/'))
+  call neobundle#begin(expand('~/.vim/bundle/'))
+  NeoBundleFetch 'Shougo/neobundle.vim'
+  call neobundle#end()
 endif
 
 let g:neobundle_default_git_protocol='https'
@@ -59,32 +61,32 @@ set rtp+=~/.vim/bundle/vundle/
   NeoBundle 'operator-replace'
 
   " textobj-user : 簡単にVimエディタのテキストオブジェクトをつくれる
-  NeoBundle 'textobj-user'
+  " NeoBundle 'textobj-user'
 
   " vim-textobj-syntax : syntax hilightされたものをtext-objectに
-  NeoBundle 'kana/vim-textobj-syntax.git'
+  " NeoBundle 'kana/vim-textobj-syntax.git'
 
   " vim-textobj-plugins : いろんなものをtext-objectにする
-  NeoBundle 'thinca/vim-textobj-plugins.git'
+  ""NeoBundle 'thinca/vim-textobj-plugins.git'
 
   " vim-textobj-lastpat : 最後に検索されたパターンをtext-objectに
-  NeoBundle 'kana/vim-textobj-lastpat.git'
+  "NeoBundle 'kana/vim-textobj-lastpat.git'
 
   " vim-textobj-indent : インデントされたものをtext-objectに
-  NeoBundle 'kana/vim-textobj-indent.git'
+  "NeoBundle 'kana/vim-textobj-indent.git'
 
   " vim-textobj-function : 関数の中身をtext-objectに
-  NeoBundle 'kana/vim-textobj-function.git'
+  "NeoBundle 'kana/vim-textobj-function.git'
 
   " vim-textobj-fold : 折りたたまれたアレをtext-objectに
   " NeoBundle 'kana/vim-textobj-fold.git'
-  NeoBundle 'textobj-rubyblock'
+  "NeoBundle 'textobj-rubyblock'
 
   " vim-textobj-entire : buffer全体をtext-objectに
-  NeoBundle 'textobj-entire'
+  "NeoBundle 'textobj-entire'
 
   " 「foo」 or 【bar】などをtext-objectに
-  NeoBundle 'textobj-jabraces'
+  "NeoBundle 'textobj-jabraces'
 
   " 改造したmonday.vim(git rebase -i とかtrue/falseとか)
   " NeoBundle 'yuroyoro/monday'
@@ -103,10 +105,11 @@ set rtp+=~/.vim/bundle/vundle/
 
   " neocomplcacheのsinpet補完
   NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet-snippets'
 
   " for rsense
   NeoBundle 'm2ym/rsense'
-  NeoBundle 'taichouchou2/vim-rsense'
+  " NeoBundle 'taichouchou2/vim-rsense'
 
   " rubyでrequire先を補完する
   " NeoBundle 'ujihisa/neco-ruby'
@@ -297,7 +300,7 @@ set rtp+=~/.vim/bundle/vundle/
 " }}}
 
 " node.js {{{{
-  NeoBundle 'teramako/jscomplete-vim'
+  " NeoBundle 'teramako/jscomplete-vim'
   NeoBundle 'myhere/vim-nodejs-complete'
   NeoBundle 'digitaltoad/vim-jade'
 " }}}
@@ -317,6 +320,7 @@ set rtp+=~/.vim/bundle/vundle/
 " Unite {{{{
   " unite.vim : - すべてを破壊し、すべてを繋げ - vim scriptで実装されたanythingプラグイン
   NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/neomru.vim'
   NeoBundle 'tsukkee/unite-help'
   NeoBundle 'h1mesuke/unite-outline'
   " NeoBundle 'Sixeight/unite-grep'
