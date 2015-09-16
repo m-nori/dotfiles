@@ -9,7 +9,13 @@ SAVEHIST=10000
 #-----------------------------------------------------------------
 # set path
 PATH=/usr/local/bin:${PATH}:${HOME}/Tools
+PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH
+
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+source $HOME/Projects/rikunabi/student-war/rn_version
 
 #-----------------------------------------------------------------
 # プロンプト
@@ -20,6 +26,8 @@ colors
 usernam=`whoami`
 setopt prompt_subst
 . ~/dotfiles/prompt.zsh
+
+source ~/dotfiles/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #-----------------------------------------------------------------
 # シェル変数設定
