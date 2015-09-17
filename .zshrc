@@ -9,13 +9,12 @@ SAVEHIST=10000
 #-----------------------------------------------------------------
 # set path
 PATH=/usr/local/bin:${PATH}:${HOME}/Tools
-PATH=$HOME/.nodebrew/current/bin:$PATH
+PATH=$HOME/.nodebrew/current/bin:$PATH:~/Library/Python/2.7/bin
 export PATH
 
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
-source $HOME/Projects/rikunabi/student-war/rn_version
 
 #-----------------------------------------------------------------
 # プロンプト
@@ -26,8 +25,9 @@ colors
 usernam=`whoami`
 setopt prompt_subst
 . ~/dotfiles/prompt.zsh
-
 source ~/dotfiles/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# powerline-daemon -q
+# . ~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/zsh/powerline.zsh
 
 #-----------------------------------------------------------------
 # シェル変数設定
@@ -175,7 +175,6 @@ echo `date +%Y/%m/%d`
 cd
 
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 ###-begin-npm-completion-###
 #
 # npm command completion script

@@ -300,6 +300,7 @@ if has('vim_starting')
     " NeoBundle 'teramako/jscomplete-vim'
     NeoBundle 'myhere/vim-nodejs-complete'
     NeoBundle 'digitaltoad/vim-jade'
+    NeoBundle 'elzr/vim-json'
   " }}}
 
   " Clojer{{{{
