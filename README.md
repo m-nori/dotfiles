@@ -1,32 +1,53 @@
-# dotfiles2
+# dotfiles
 
 macOS 向けの個人dotfiles。Neovim / fish shell / WezTerm / tmux の設定を管理。
 
 ## 構成
 
 ```
-dotfiles2/
+dotfiles/
 ├── init.lua        # Neovim 設定 (メイン)
 ├── config.fish     # fish shell 設定
 ├── wezterm.lua     # WezTerm ターミナル設定
 ├── .tmux.conf      # tmux 設定
-└── installer.sh    # (旧) dein.vim インストーラー ※未使用
+└── installer.sh    # セットアップスクリプト
 ```
 
 ## セットアップ
 
 ```bash
-# シンボリックリンクを作成
-ln -sf ~/dotfiles2/init.lua ~/.config/nvim/init.lua
-ln -sf ~/dotfiles2/config.fish ~/.config/fish/config.fish
-ln -sf ~/dotfiles2/wezterm.lua ~/.config/wezterm/wezterm.lua
+git clone <repo-url> ~/dotfiles
+cd ~/dotfiles
+./installer.sh
 ```
 
-### 前提ツール
+以下を自動で行います:
 
-```bash
-brew install neovim fish fzf zoxide direnv wezterm
-```
+1. **Homebrew** のインストール (未導入の場合)
+2. **パッケージのインストール**: neovim, fish, fzf, zoxide, direnv, tmux, pyenv, nodebrew, deno, wezterm
+3. **fish shell** を `/etc/shells` に追加
+4. **Oh My Fish** のインストール
+5. **シンボリックリンクの作成** (既存ファイルは `.bak` にバックアップ)
+   - `init.lua` -> `~/.config/nvim/init.lua`
+   - `config.fish` -> `~/.config/fish/config.fish`
+   - `wezterm.lua` -> `~/.config/wezterm/wezterm.lua`
+   - `.tmux.conf` -> `~/.tmux.conf`
+
+### インストールされるパッケージ
+
+| パッケージ | 用途 |
+|-----------|------|
+| neovim | エディタ |
+| fish | シェル |
+| fzf | ファジーファインダー |
+| zoxide | ディレクトリ履歴 (z の後継) |
+| direnv | ディレクトリ単位の環境変数管理 |
+| tmux | ターミナルマルチプレクサ |
+| pyenv | Python バージョン管理 |
+| nodebrew | Node.js バージョン管理 |
+| deno | JavaScript/TypeScript ランタイム |
+| bat | cat の代替 (シンタックスハイライト付き) |
+| wezterm (cask) | ターミナルエミュレータ |
 
 ## 各設定ファイルの詳細
 
