@@ -35,9 +35,12 @@ direnv hook fish | source
 # プロンプト
 omf theme bobthefish
 
-# 📁 ディレクトリ履歴移動（Ctrl + ]）
+# zoxide（ディレクトリ履歴）
+zoxide init fish | source
+
+# ディレクトリ履歴移動（Ctrl + ]）
 function fzf_change_directory
-  set dir (sort -r -t '|' -k 3 ~/.z 2>/dev/null | sed 's/|.*//' | uniq | fzf --layout=reverse --height=40%)
+  set dir (zoxide query -l | fzf --layout=reverse --height=40%)
   if test -n "$dir"
     cd $dir
   end

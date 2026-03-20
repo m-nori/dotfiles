@@ -451,28 +451,4 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
 })
 
------------------------------------------
--- Claude連携
------------------------------------------
-function SendToClaude()
-  -- Visualモードで選択範囲を取得
-  local start_line = vim.fn.line("v")
-  local end_line = vim.fn.line(".")
-
-  if start_line > end_line then
-    start_line, end_line = end_line, start_line
-  end
-
-  local lines = vim.fn.getline(start_line, end_line)
-  local text = table.concat(lines, "\n")
-  local cmd = "tmux send-keys -t :.-1 " .. vim.fn.shellescape(text)
-  vim.fn.system(cmd)
-  vim.fn.system("tmux send-keys -t :.-1 Enter")
-end
-
--- Visualモードで <leader>r を押すとClaudeに送信
-vim.keymap.set("v", "<leader>r", function()
-  SendToClaude()
-end, { noremap = true, silent = true })
-
 
