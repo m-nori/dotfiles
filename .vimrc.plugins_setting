@@ -169,17 +169,17 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt =  ''
 endif
 
-nnoremap [unite] <Nop>
-nmap f [unite]
+" nnoremap [unite] <Nop>
+" map f [unite]
 
-nnoremap [unite]f :<C-u>Unite buffer<CR>
-nnoremap [unite]a :<C-u>Unite buffer_tab<CR>
-nnoremap [unite]t :<C-u>Unite tab<CR>
-nnoremap [unite]d :<C-u>Unite file<CR>
-nnoremap [unite]g :<C-u>Unite grep<CR>
-nnoremap [unite]l :<C-u>Unite line<CR>
-nnoremap [unite]y :<C-u>Unite history/yank -default-action=append<CR>
-nnoremap [unite]b :<C-u>Unite bookmark<CR>
+" noremap [unite]f :<C-u>Unite buffer<CR>
+" noremap [unite]a :<C-u>Unite buffer_tab<CR>
+" noremap [unite]t :<C-u>Unite tab<CR>
+" noremap [unite]d :<C-u>Unite file<CR>
+" noremap [unite]g :<C-u>Unite grep<CR>
+" noremap [unite]l :<C-u>Unite line<CR>
+" noremap [unite]y :<C-u>Unite history/yank -default-action=append<CR>
+" noremap [unite]b :<C-u>Unite bookmark<CR>
 
 "------------------------------------
 " quickrun.vim
