@@ -76,6 +76,16 @@ link "$DOTFILES_DIR/config.fish"  "$HOME/.config/fish/config.fish"
 link "$DOTFILES_DIR/wezterm.lua"  "$HOME/.config/wezterm/wezterm.lua"
 link "$DOTFILES_DIR/.tmux.conf"   "$HOME/.tmux.conf"
 
+# Claude Code
+link "$DOTFILES_DIR/.claude/CLAUDE.md"                          "$HOME/.claude/CLAUDE.md"
+link "$DOTFILES_DIR/.claude/skills/commit/SKILL.md"             "$HOME/.claude/skills/commit/SKILL.md"
+link "$DOTFILES_DIR/.claude/skills/push/SKILL.md"               "$HOME/.claude/skills/push/SKILL.md"
+link "$DOTFILES_DIR/.claude/skills/merge/SKILL.md"              "$HOME/.claude/skills/merge/SKILL.md"
+link "$DOTFILES_DIR/.claude/skills/slides-maker/SKILL.md"       "$HOME/.claude/skills/slides-maker/SKILL.md"
+link "$DOTFILES_DIR/.claude/skills/slides-maker/references/design-en.md"     "$HOME/.claude/skills/slides-maker/references/design-en.md"
+link "$DOTFILES_DIR/.claude/skills/slides-maker/references/design-ja.md"     "$HOME/.claude/skills/slides-maker/references/design-ja.md"
+link "$DOTFILES_DIR/.claude/skills/slides-maker/references/design-system.md" "$HOME/.claude/skills/slides-maker/references/design-system.md"
+
 echo ""
 echo "=== Done! ==="
 echo "Restart your terminal or run: exec fish"
