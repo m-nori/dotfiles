@@ -131,6 +131,13 @@ require("lazy").setup({
     },
     config = function()
       require("dropbar").setup({
+        bar = {
+          enable = function(buf, win, _)
+            return vim.fn.win_gettype(win) == ''
+              and vim.wo[win].winbar == ''
+              and vim.bo[buf].ft ~= 'help'
+          end,
+        },
         icons = {
           enable = true,
         },
@@ -140,9 +147,9 @@ require("lazy").setup({
           },
         },
       })
-      vim.keymap.set('n', '<leader>db', function()
-        require("dropbar.api").pick()
-      end, { desc = "Open Dropbar" })
+      vim.keymap.set('n', '<leader>d', function()
+        require("dropbar.api").pick(1)
+      end, { desc = "Open Dropbar from root" })
     end,
   },
   -----------------------------------------

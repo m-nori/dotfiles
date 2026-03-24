@@ -131,7 +131,7 @@ cd ~/dotfiles
 | `fd` | Normal | Telescope: git status |
 | `,gd` | Normal | Git diff split |
 | `,gn` | Normal | Neogit を開く |
-| `,db` | Normal | Dropbar を開く |
+| `,d` | Normal | Dropbar をプロジェクトルートから開く |
 | `,mv` | Normal | Markview トグル |
 | `,mp` | Normal | Markdown ブラウザプレビュー トグル |
 | `]c` / `[c` | Normal | 次/前の Git hunk へ移動 |
