@@ -32,8 +32,7 @@ direnv hook fish | source
 #-----------------------------------------------------------------
 # fish設定
 #-----------------------------------------------------------------
-# プロンプト
-omf theme bobthefish
+# プロンプト: tide (fisher install IlanCosman/tide@v6)
 
 # zoxide（ディレクトリ履歴）
 zoxide init fish | source

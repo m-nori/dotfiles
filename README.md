@@ -145,7 +145,7 @@ cd ~/dotfiles
 
 | 項目 | 内容 |
 |------|------|
-| テーマ | bobthefish (Oh My Fish) |
+| テーマ | tide v6 (Fisher) |
 | エディタ | nvim |
 | PATH | homebrew, pyenv, nodebrew, ~/.local/bin |
 | direnv | 有効 |

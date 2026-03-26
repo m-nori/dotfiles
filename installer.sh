@@ -44,12 +44,16 @@ if ! grep -q "$FISH_PATH" /etc/shells; then
 fi
 
 #-----------------------------------------
-# Oh My Fish
+# Fisher + tide
 #-----------------------------------------
-if [ ! -d "$HOME/.local/share/omf" ]; then
-  echo "Installing Oh My Fish..."
-  curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-fi
+echo "Installing Fisher and tide..."
+fish -c '
+  if not functions -q fisher
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
+    fisher install jorgebucaran/fisher
+  end
+  fisher install IlanCosman/tide@v6
+'
 
 #-----------------------------------------
 # シンボリックリンク作成
